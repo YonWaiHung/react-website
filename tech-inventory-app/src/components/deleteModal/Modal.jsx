@@ -24,7 +24,7 @@ function Modal({ isOpen, onClose, onConfirm }) {
 }
 
 Modal.propTypes = {
-  isOpen: PropTypes.func,
+  isOpen: PropTypes.bool,
   onClose: PropTypes.func,
   onConfirm: PropTypes.func,
 }

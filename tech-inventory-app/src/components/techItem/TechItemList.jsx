@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import TechDataService from "../services/TechDataService";
+import TechDataService from "../../services/TechDataService";
 import { MdDelete, MdEdit } from "react-icons/md";
-import Modal from "./Modal";
+import Modal from "../deleteModal/Modal";
 
 function TechItemList() {
   const [techItems, setTechItems] = useState([]);
@@ -40,10 +40,6 @@ function TechItemList() {
       .catch(error => {
         console.log(error);
       });
-  };
-
-  const onAddButton = () => {
-    // Navigate to add tech item page
   };
 
   // const onEditButton = (techItem) => {
@@ -87,7 +83,7 @@ function TechItemList() {
           <div>
             <h5>Tech Items</h5>
           </div>
-          <button onClick={onAddButton}><Link to="/add" style={{ textDecoration: 'none' }} className='link-text'>Register New Tech</Link></button>
+          <button><Link to="/tech-list/add" style={{ textDecoration: 'none' }} className='link-text'>Register New Tech</Link></button>
         </div>
         <div>
           <table id="datatable-basic" className="table">
@@ -104,7 +100,7 @@ function TechItemList() {
               techItems.map((techItem, index) => (
                 <tr key={index} className={index === currentIndex ? "active" : ""}>
                   <td >
-                    <Link to={`/techItems/${techItem.id}`} ><MdEdit/></Link>
+                    <Link to={`/techItems/${techItem.id}` } style={{ textDecoration: 'none' }}><MdEdit/></Link>
                     {/* When clicked, trigger onDeleteButton function */}
                     <MdDelete onClick={() => onDeleteButton(techItem)} />
                   </td>

@@ -31,8 +31,8 @@ function Login({ onLoginSuccess }) {
     // Pretend it's hitting the network.
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        let correctUsername = 'a';
-        let correctPassword = 's';
+        let correctUsername = 'admin';
+        let correctPassword = 'password123';
         if (username !== correctUsername || password !== correctPassword) {
           reject(new Error('Invalid Username or Password'));
         } else {

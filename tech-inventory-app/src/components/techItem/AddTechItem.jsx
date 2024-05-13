@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import TechDataService from '../services/TechDataService';
+import TechDataService from '../../services/TechDataService';
 import { Link } from 'react-router-dom';
 
 function AddTechItem() {
@@ -85,14 +85,14 @@ function AddTechItem() {
             <button type="submit" className="form-submit-button">Save</button>
           </div>
           <div className="text-right">
-            <button className='cancel-button'><Link to="/" style={{ textDecoration: 'none' }} className='link-text'>Cancel</Link></button>
+            <button className='cancel-button'><Link to="/tech-list" style={{ textDecoration: 'none' }} className='link-text'>Cancel</Link></button>
           </div>
         </form>
       ) : (
         <div className="success-message">
           <h4>You submitted successfully!</h4>
           <button className="add-another-button" onClick={newTechItem}>Add Another</button>
-          <button><Link to="/" style={{ textDecoration: 'none' }} className='link-text'>Back to List</Link></button>
+          <button><Link to="/tech-list" style={{ textDecoration: 'none' }} className='link-text'>Back to List</Link></button>
         </div>
       )}
     </div>
