@@ -23,9 +23,11 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #0056b3;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -34,9 +36,12 @@ button:focus-visible {
 /* Login Styling */
 .loginContainer {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Set container height to full viewport height */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  height: 100vh;
+  /* Set container height to full viewport height */
 }
 
 .loginForm {
@@ -57,7 +62,8 @@ button:focus-visible {
 }
 
 .loginForm input {
-  width: calc(100% - 20px);;
+  width: calc(100% - 20px);
+  ;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -188,7 +194,7 @@ button:focus-visible {
   }
 } */
 
-.list-category{
+.list-category {
   font-size: 2.5em;
   font-weight: bold;
   color: hsl(0, 0%, 20%);
@@ -206,7 +212,7 @@ button:focus-visible {
   margin: 0;
 }
 
-.list-items li:hover{
+.list-items li:hover {
   font-size: 2em;
   list-style: none;
   text-align: center;
@@ -254,7 +260,7 @@ button:focus-visible {
   align-items: center;
 }
 
-.color-display{
+.color-display {
   width: 300px;
   height: 300px;
   display: flex;
@@ -333,58 +339,62 @@ input[type="color"] {
 
 @media (max-width: 768px) {
   .desktop-nav {
-      display: none;
+    display: none;
   }
 }
 
 /* Sidebar.css */
 .bm-burger-button {
-    position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 36px;
-    top: 25px;
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 25px;
 }
 
 .bm-burger-bars {
-    background: #373a47;
+  background: #373a47;
 }
 
 .bm-cross-button {
-    height: 24px;
-    width: 24px;
+  height: 24px;
+  width: 24px;
 }
 
 .bm-cross {
-    background: #bdc3c7;
+  background: #bdc3c7;
 }
 
 .bm-menu-wrap {
-    position: fixed;
-    height: 100%;
+  position: fixed;
+  height: 100%;
 }
 
 .bm-menu {
-    background: #ffffff;
-    padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
-    color: #333;
+  background: #ffffff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  color: #333;
 }
 
 .bm-item-list {
-    color: #b8b7ad;
-    padding: 0.8em;
+  color: #b8b7ad;
+  padding: 0.8em;
 }
 
+.bm-scroll {
+  display: none;
+}
 .bm-item {
-    display: block;
-    text-decoration: none;
-    color: #333;
-    transition: color 0.2s;
+  display: block;
+  text-decoration: none;
+  color: #333;
+  margin-bottom: 4rem;
+  transition: color 0.2s;
 }
 
 .bm-item:hover {
-    color: red;
+  color: red;
 }
 
 /* list styling */
@@ -507,7 +517,7 @@ input[type="color"] {
 }
 
 .add-another-button {
-  
+
   margin-top: 20px;
   padding: 10px;
   background-color: #007bff;
