@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 
-function List(props) {
+function List({category= "Category", items= []}) {
 
+  const itemCategory = category;
   // eslint-disable-next-line react/prop-types
-  const category = props.category;
-  // eslint-disable-next-line react/prop-types
-  const itemList = props.items;
+  const itemList = items;
 
   // eslint-disable-next-line react/prop-types
   const listItems = itemList.map(item =>
@@ -17,20 +16,21 @@ function List(props) {
 
   return (
     <>
-      <h3 className="list-category">{category}</h3>
+      <h3 className="list-category">{itemCategory}</h3>
       <ol className="item-items">{listItems}</ol>
     </>);
 
 }
 // Set the datatype of props as good practice for debugging incorrect data inputted
-List.PropTypes = {
+List.propTypes = {
   category: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, calories: PropTypes.number })),
 }
+
 // In case the list is missing
-List.defaultProps = {
-  category: "Category",
-  items: [],
-}
+// List.defaultProps = {
+//   category: "Category",
+//   items: [],
+// }
 
 export default List
