@@ -13,7 +13,74 @@ label {
   font-weight: bold;
   margin-bottom: 10px;
 }
-.card{
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Login Styling */
+.loginContainer {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Set container height to full viewport height */
+}
+
+.loginForm {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loginForm h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.loginForm p {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.loginForm input {
+  width: calc(100% - 20px);;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.loginForm button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.loginForm button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Card Styling */
+/* .card{
   border: 1px solid rgb(197, 197, 197);
   border-radius: 10px;
   box-shadow: 5px 5px 5px hsl(0, 0%, 10%);
@@ -40,7 +107,7 @@ label {
 .card .card-text{
   font-family: Arial, sans-serif;
   color: hsl(0, 0%, 30%);
-}
+} */
 
 /* Naming convention too generic may lead to conflict down the road */
 /* .button{
@@ -211,4 +278,310 @@ input[type="color"] {
   padding: 5px;
   border-radius: 10px;
   border: 3px solid hsl(0, 0%, 80%);
+}
+
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 60px;
+}
+
+.logo {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.logo a {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.desktop-nav {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.desktop-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+}
+
+.desktop-nav ul li a {
+  padding: 20px 25px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.burger-menu {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  display: block;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+      display: none;
+  }
+}
+
+/* Sidebar.css */
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 25px;
+}
+
+.bm-burger-bars {
+    background: #373a47;
+}
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+.bm-cross {
+    background: #bdc3c7;
+}
+
+.bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+}
+
+.bm-menu {
+    background: #ffffff;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+    color: #333;
+}
+
+.bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+}
+
+.bm-item {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.bm-item:hover {
+    color: red;
+}
+
+/* list styling */
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-header h5 {
+  margin: 0;
+}
+
+.card-header button Link {
+  text-decoration: none;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.emptyListTextRow {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.btn-outline-secondary {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* AddTechItem.css */
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  max-width: 97%;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-submit-button:hover {
+  background-color: #45a049;
+}
+
+.success-message {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #008000;
+}
+
+.add-another-button {
+  
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-another-button:hover {
+  background-color: #0056b3;
+}
+
+.link-text {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.cancel-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #eb2929;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: #bf0000;
+}
+
+/* Modal CSS Styling */
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-button {
+  margin-left: 10px;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-button.confirm {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.modal-button.cancel {
+  background-color: #f44336;
+  color: white;
 }
