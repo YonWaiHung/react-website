@@ -1,18 +1,11 @@
-import Login from './Login.jsx'
+import Login from './components/login/Login.jsx'
 import Header from './Header.jsx'
-import Sidebar from './Sidebar.jsx'
-import TechItemList from './components/TechItemList.jsx'
-import AddTechItem from './components/AddTechItem.jsx';
-import TechItem from './components/TechItem.jsx';
-// import Footer from './Footer.jsx'
-// import Food from './Food.jsx'
-// import Card from './card/Card.jsx'
-// import Button from './Button.jsx'
-// import List from './List.jsx'
-// import ProfilePicture from './ProfilePicture.jsx'
-// import MyComponent from './MyComponent.jsx'
-// import Counter from './Counter.jsx'
-// import ColorPicker from './ColorPicker.jsx'
+import Sidebar from './components/sidebar/Sidebar.jsx'
+import TechItemList from './components/techItem/TechItemList.jsx'
+import AddTechItem from './components/techItem/AddTechItem.jsx';
+import TechItem from './components/techItem/TechItem.jsx';
+import Counter from './Counter.jsx'
+import ColorPicker from './ColorPicker.jsx'
 // eslint-disable-next-line no-unused-vars
 import React, {useState} from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -20,50 +13,37 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 function App() {
   // State to manage user authentication
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [color, setColor] = useState("#FFFFFF");
 
-  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
-
-  // const fruits = [
-  //   {id: 1, name: "apple", calories: 95},
-  //   {id: 2, name: "orange", calories: 42},
-  //   {id: 3, name: "banana", calories: 135},
-  //   {id: 4, name: "durian", calories: 284},
-  // ];
+  function handleColorChange(event) {
+    setColor(event.target.value);
+  }
 
   // Function to handle successful login
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
   };
 
-  if (isLoggedIn ) {
+  const handleLogoutSuccess = () => {
+    setIsLoggedIn(false);
+  };
+
+  if (isLoggedIn) {
     return (
       <>
-        <div id="outer-container">
-          <Header toggleSidebar={toggleSidebar}/>
-          <Sidebar isOpen={sidebarOpen} onStateChange={(state) => setSidebarOpen(state.isOpen)} />
-        </div>
-        {/* <TechItemList/> */}
         <BrowserRouter>
+          <div id="outer-container">
+            <Header />
+            <Sidebar onLogout={handleLogoutSuccess}/>
+          </div>
           <Routes>
-            <Route index element={<TechItemList/>} />
-            {/* <Route path="/techItems" element={<TechItemList/>} /> */}
-            <Route path="/add" element={<AddTechItem/>} />
+            <Route index element={<Counter/>} />
+            <Route path="/tech-list" element={<TechItemList/>} />
+            <Route path="/tech-list/add" element={<AddTechItem/>} />
             <Route path={`/techItems/:id`} element={<TechItem />} />
+            <Route path='/color-picker' element={<ColorPicker colorDisplay={color} onColorChange={handleColorChange} />} />
           </Routes>
         </BrowserRouter>
-        {/* <ProfilePicture/>
-        <Card/>
-        <Card/>
-        <Button/>
-        <MyComponent/>
-        <Counter/>
-        <Food/>
-        <ColorPicker/>
-        <Footer/> */}
-        {/* if one of the two condition is false, it wont load/come true. 
-        The list condi will always be true as it exists */}
-        {/* {fruits.length > 0 && <List items={fruits} category="Fruits"/>} */}
         
       </>
     )
