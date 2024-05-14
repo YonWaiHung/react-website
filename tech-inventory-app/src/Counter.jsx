@@ -23,6 +23,8 @@ function countReducer(state, action) {
 function Counter() {
 
   // useState function allow creation of stateful variables that update in the virtual DOM
+  
+  
   const [state, dispatch] = useReducer(countReducer, { count: 0 });
 
   useEffect (() => {

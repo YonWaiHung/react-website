@@ -1,17 +1,65 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import TechDataService from "../../services/TechDataService";
 import { MdDelete, MdEdit } from "react-icons/md";
 import Modal from "../deleteModal/Modal";
 
+// Reducer for custom tech list states
+function techItemListReducer(state, action) {
+  switch (action.type) {
+    case 'set_tech_items':
+      return{
+        ...state,
+        techItems: action.payload,
+      };
+    case 'set_current_index':
+      return { 
+        ...state,
+        currentIndex: -1 
+      };
+    case 'set_tech_type':
+      return{
+        ...state,
+        techType: action.payload,
+      };
+    case 'set_modal_open':
+      return { 
+        ...state,
+        modalOpen: true 
+      };
+    case 'set_modal_close':
+      return { 
+        ...state,
+        modalOpen: false 
+      };
+    case 'set_item_to_delete':
+      return{
+        ...state,
+        itemToDelete: action.payload,
+      };
+    default:
+      throw Error('Unknown action: ' + action.type);
+  }
+}
+
 function TechItemList() {
-  const [techItems, setTechItems] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  const [techType, setTechType] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [itemToDelete, setItemToDelete] = useState(null);
-  
+  // const [techItems, setTechItems] = useState([]);
+  // const [currentIndex, setCurrentIndex] = useState(-1);
+  // const [techType, setTechType] = useState("");
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [itemToDelete, setItemToDelete] = useState(null);
+
+  const [state, dispatch] = useReducer(
+    techItemListReducer, {
+      techItems: [],
+      currentIndex: -1,
+      techType: "",
+      modalOpen: false,
+      itemToDelete: null
+    }
+  )
+
   useEffect(() => {
     retrieveTechItems();
   }, []);
@@ -19,7 +67,11 @@ function TechItemList() {
   const retrieveTechItems = () => {
     TechDataService.getAll()
       .then(response => {
-        setTechItems(response.data);
+        // setTechItems(response.data);
+        dispatch({
+          type: 'set_tech_items',
+          payload: response.data,
+        })
       })
       .catch(error => {
         console.log(error);
@@ -28,14 +80,19 @@ function TechItemList() {
 
   const refreshList = () => {
     retrieveTechItems();
-    setCurrentIndex(-1);
+    // setCurrentIndex(-1);
+    dispatch({ type: 'set_current_index' })
   };
 
   const searchTechType = () => {
-    TechDataService.findByTechType(techType)
+    TechDataService.findByTechType(state.techType)
       .then(response => {
         console.log(response.data);
-        setTechItems(response.data);
+        // setTechItems(response.data);
+        dispatch({
+          type: 'set_tech_items',
+          payload: response.data,
+        })
       })
       .catch(error => {
         console.log(error);
@@ -50,17 +107,23 @@ function TechItemList() {
 
   const onDeleteButton = (techItem) => {
     // Assign selected tech item data to itemToDelete state
-    setItemToDelete(techItem);
+    // setItemToDelete(techItem);
+    dispatch({
+      type: 'set_item_to_delete',
+      payload: techItem,
+    })
     // set isModalOpen state to true, effectively opening the modal
-    setIsModalOpen(true);
+    // setIsModalOpen(true);
+    dispatch({ type: 'set_modal_open' })
   };
 
   // Delete selected data row from the database & refresh the list to reflect the changes
   const handleConfirmDelete = () => {
-    TechDataService.delete(itemToDelete.id)
+    TechDataService.delete(state.itemToDelete.id)
       .then(response => {
         console.log(response.data);
-        setIsModalOpen(false);
+        // setIsModalOpen(false);
+        dispatch({ type: 'set_modal_close' })
         refreshList();
       })
       .catch(error => {
@@ -72,7 +135,16 @@ function TechItemList() {
     <div className="list">
       <div>
         <div className="input-group">
-          <input type="text" placeholder="Search by Tech Type" value={techType} onChange={(e) => setTechType(e.target.value)} />
+          <input 
+            type="text" 
+            placeholder="Search by Tech Type" 
+            value={state.techType} 
+            onChange={(e) => 
+            // setTechType(e.target.value)
+            dispatch ({
+              type: 'set_tech_type',
+              payload: e.target.value,
+            })} />
           <div>
             <button className="btn btn-outline-secondary" type="button" onClick={searchTechType}>Search</button>
           </div>
@@ -83,7 +155,7 @@ function TechItemList() {
           <div>
             <h5>Tech Items</h5>
           </div>
-          <button><Link to="/tech-list/add" style={{ textDecoration: 'none' }} className='link-text'>Register New Tech</Link></button>
+          <Link to="/tech-list/add" style={{ textDecoration: 'none' }} className='link-text'><button>Register New Tech</button></Link>
         </div>
         <div>
           <table id="datatable-basic" className="table">
@@ -96,35 +168,38 @@ function TechItemList() {
               </tr>
             </thead>
             <tbody>
-            {techItems.length ? (
-              techItems.map((techItem, index) => (
-                <tr key={index} className={index === currentIndex ? "active" : ""}>
-                  <td >
-                    <Link to={`/techItems/${techItem.id}` } style={{ textDecoration: 'none' }}><MdEdit/></Link>
-                    {/* When clicked, trigger onDeleteButton function */}
-                    <MdDelete onClick={() => onDeleteButton(techItem)} />
-                  </td>
-                  <td>{techItem.techType}</td>
-                  <td>{techItem.techName}</td>
-                  <td>{techItem.amount}</td>
+              {state.techItems.length ? (
+                state.techItems.map((techItem, index) => (
+                  <tr key={index} className={index === state.currentIndex ? "active" : ""}>
+                    <td >
+                      <Link to={`/techItems/${techItem.id}`} style={{ textDecoration: 'none' }}><MdEdit /></Link>
+                      {/* When clicked, trigger onDeleteButton function */}
+                      <MdDelete onClick={() => onDeleteButton(techItem)} />
+                    </td>
+                    <td>{techItem.techType}</td>
+                    <td>{techItem.techName}</td>
+                    <td>{techItem.amount}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className='emptyListTextRow'>No data present in the list...</td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="4" className='emptyListTextRow'>No data present in the list...</td>
-              </tr>
-            )}
+              )}
             </tbody>
           </table>
         </div>
       </div>
-      <Modal 
+      <Modal
         // For verifying the delete modal is desired to be opened
-        isOpen={isModalOpen} 
+        isOpen={state.modalOpen}
         // If called, turn isModalOpen state to false, effectively closing Modal
-        onClose={() => setIsModalOpen(false)} 
+        onClose={() => 
+          // setIsModalOpen(false)
+          dispatch ({ type: 'set_modal_close' })
+        }
         // If called, trigger handleConfirmDelete function
-        onConfirm={handleConfirmDelete} 
+        onConfirm={handleConfirmDelete}
       />
     </div>
   );
