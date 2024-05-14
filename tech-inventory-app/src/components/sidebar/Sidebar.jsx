@@ -12,25 +12,34 @@ function Sidebar({ onLogout }) {
   const handleToggleSidebar = () => {
     setIsOpen(!isOpen); // Toggle the sidebar state
   };
+
+  // set sidebar open as true while the menu is called
   const handleOnOpen = () => {
     setIsOpen(true);
   }
 
+  // set sidebar open as false while the menu is hidden
+  const handleOnClose = () => {
+    setIsOpen(false);
+  }
+
   const onLogoutButton = () => {
     handleToggleSidebar();
-    // set isModalOpen state to true, effectively opening the modal
+    // Set isModalOpen state to true, effectively opening the modal
     setIsLogoutModalOpen(true);
   };
 
   const handleConfirmLogout = () => {
+    // Call log out process over at App.jsx
     onLogout();
+    // Hide log out confirmation modal
     setIsLogoutModalOpen(false);
     console.log("Logged Out");
   }
 
   return (
     <>
-    <Menu customCrossIcon={false} isOpen={ isOpen } onOpen={ handleOnOpen } >
+    <Menu customCrossIcon={false} isOpen={ isOpen } onOpen={ handleOnOpen } onClose={handleOnClose} >
       <Link to="/" className="menu-item" onClick={handleToggleSidebar}>Home</Link>
       <Link to="/tech-list" className="menu-item" onClick={handleToggleSidebar}>Tech List</Link>
       <Link to="/color-picker" className="menu-item" onClick={handleToggleSidebar}>Color Picker</Link>
@@ -47,7 +56,9 @@ function Sidebar({ onLogout }) {
     </>
   )
 }
+
 Sidebar.propTypes = {
   onLogout: PropTypes.func,
 }
+
 export default Sidebar
