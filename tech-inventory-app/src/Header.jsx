@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
+// Header component utilising react-burger-menu library to display the burger menu
 function Header() {
   return (
     <header className="header">
