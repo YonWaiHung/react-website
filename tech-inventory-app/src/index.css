@@ -382,10 +382,6 @@ input[type="color"] {
   padding: 0.8em;
 }
 
-.bm-scroll {
-  display: none;
-}
-
 .bm-item {
   display: block;
   text-decoration: none;
@@ -456,6 +452,7 @@ input[type="color"] {
 .table {
   width: 100%;
   border-collapse: collapse;
+  outline: #7e7e7e double thick;
 }
 
 .table th,

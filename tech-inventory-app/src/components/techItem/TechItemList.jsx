@@ -152,9 +152,7 @@ function TechItemList() {
       </div>
       <div>
         <div className="card-header">
-          <div>
             <h2>Tech Items</h2>
-          </div>
           <Link to="/tech-list/add" style={{ textDecoration: 'none' }} className='link-text'><button>Register New Tech</button></Link>
         </div>
         <div>

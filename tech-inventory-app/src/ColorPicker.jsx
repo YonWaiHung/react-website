@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-function ColorPicker({colorDisplay, onColorChange}) {
+function ColorPicker({colorDisplay = "", onColorChange}) {
   
   // const [color, setColor] = useState("#FFFFFF");
 
