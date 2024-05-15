@@ -144,7 +144,7 @@ function TechItem() {
       ) : (
         <div className="success-message">
           <h4>You edited successfully!</h4>
-          <Link to="/tech-list" style={{ textDecoration: 'none' }} className='link-text'><button>Back to List</button></Link>
+          <Link to="/tech-list" style={{ textDecoration: 'none' }} className='link-text'><button className='blue-width-button'>Back to List</button></Link>
         </div>
       )}
     </div>

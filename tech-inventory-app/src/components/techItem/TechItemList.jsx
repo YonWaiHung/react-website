@@ -134,7 +134,7 @@ function TechItemList() {
   return (
     <div className="list">
       <div>
-        <div className="input-group">
+        <div className="search-input-group">
           <input 
             type="text" 
             placeholder="Search by Tech Type" 
@@ -153,7 +153,7 @@ function TechItemList() {
       <div>
         <div className="card-header">
           <div>
-            <h5>Tech Items</h5>
+            <h2>Tech Items</h2>
           </div>
           <Link to="/tech-list/add" style={{ textDecoration: 'none' }} className='link-text'><button>Register New Tech</button></Link>
         </div>

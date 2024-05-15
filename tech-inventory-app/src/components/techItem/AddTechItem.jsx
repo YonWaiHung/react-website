@@ -139,8 +139,8 @@ function AddTechItem() {
       ) : (
         <div className="success-message">
           <h4>You submitted successfully!</h4>
-          <button className="add-another-button" onClick={newTechItem}>Add Another</button>
-          <Link to="/tech-list" style={{ textDecoration: 'none' }} className='link-text'><button>Back to List</button></Link>
+          <button className="blue-width-button" onClick={newTechItem}>Add Another</button>
+          <Link to="/tech-list" style={{ textDecoration: 'none' }} className='link-text'><button className="blue-width-button">Back to List</button></Link>
         </div>
       )}
     </div>

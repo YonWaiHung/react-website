@@ -404,9 +404,34 @@ input[type="color"] {
   margin: auto;
 }
 
-.input-group {
+/* .search-input-group {
   margin-bottom: 20px;
 }
+
+.search-input-group input{
+  margin: 20px;
+  padding: 10px;
+  width: 100%;
+} */
+
+.search-input-group {
+  /* margin-bottom: 20px; */
+  display: flex;
+  align-items: center;
+}
+
+.search-input-group input {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.search-input-group button {
+  padding: 10px 20px;
+  margin-left: 10px;
+}
+
 
 .card-header {
   display: flex;
@@ -450,16 +475,6 @@ input[type="color"] {
 .emptyListTextRow {
   color: #6c757d;
   font-style: italic;
-}
-
-.btn-outline-secondary {
-  border-color: #6c757d;
-  color: #6c757d;
-}
-
-.btn-outline-secondary:hover {
-  background-color: #6c757d;
-  color: #fff;
 }
 
 /* AddTechItem.css */
@@ -516,7 +531,7 @@ input[type="color"] {
   color: #008000;
 }
 
-.add-another-button {
+.blue-width-button {
 
   margin-top: 20px;
   padding: 10px;
@@ -527,7 +542,7 @@ input[type="color"] {
   cursor: pointer;
 }
 
-.add-another-button:hover {
+.blue-width-button:hover {
   background-color: #0056b3;
 }
 
