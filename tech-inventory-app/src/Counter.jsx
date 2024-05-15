@@ -27,9 +27,9 @@ function Counter() {
   
   const [state, dispatch] = useReducer(countReducer, { count: 0 });
 
-  useEffect (() => {
-    console.log("Component rendered");
-  });
+  // useEffect (() => {
+  //   console.log("Component rendered");
+  // });
 
   const increment = () => {
     // Updating function (the =>) which take pending state (c) to calculate 
