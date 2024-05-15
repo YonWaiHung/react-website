@@ -385,12 +385,17 @@ input[type="color"] {
 .bm-scroll {
   display: none;
 }
+
 .bm-item {
   display: block;
   text-decoration: none;
   color: #333;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   transition: color 0.2s;
+}
+
+.customIcon {
+  margin-right: 5px;
 }
 
 .bm-item:hover {

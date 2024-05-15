@@ -4,6 +4,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LogoutModal from "../logoutModal/LogoutModal.jsx";
+import { MdHome, MdFormatListBulleted, MdColorLens, MdLogout } from "react-icons/md";
 
 function Sidebar({ onLogout }) {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
@@ -40,10 +41,10 @@ function Sidebar({ onLogout }) {
   return (
     <>
     <Menu customCrossIcon={false} isOpen={ isOpen } onOpen={ handleOnOpen } onClose={handleOnClose} >
-      <Link to="/" className="menu-item" onClick={handleToggleSidebar}>Home</Link>
-      <Link to="/tech-list" className="menu-item" onClick={handleToggleSidebar}>Tech List</Link>
-      <Link to="/color-picker" className="menu-item" onClick={handleToggleSidebar}>Color Picker</Link>
-      <Link to="/" className="menu-item" onClick={onLogoutButton}>Logout</Link>
+      <Link to="/" className="menu-item" onClick={handleToggleSidebar}><MdHome className='customIcon' />Home</Link>
+      <Link to="/tech-list" className="menu-item" onClick={handleToggleSidebar}><MdFormatListBulleted className='customIcon' />Tech List</Link>
+      <Link to="/color-picker" className="menu-item" onClick={handleToggleSidebar}><MdColorLens className='customIcon' />Color Picker</Link>
+      <Link to="/" className="menu-item" onClick={onLogoutButton}><MdLogout className='customIcon' />Logout</Link>
     </Menu>
     <LogoutModal 
         // For verifying the delete modal is desired to be opened
