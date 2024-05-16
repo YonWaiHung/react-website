@@ -25,8 +25,8 @@ class TechDataService {
     return http.delete(`/techItems`);
   }
 
-  findByTechType(techType) {
-    return http.get(`/techItems?techType=${techType}`);
+  findByTechName(techName) {
+    return http.get(`/techItems?techName=${techName}`);
   }
 }
 

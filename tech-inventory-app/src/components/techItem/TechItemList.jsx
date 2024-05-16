@@ -18,10 +18,10 @@ function techItemListReducer(state, action) {
         ...state,
         currentIndex: -1 
       };
-    case 'set_tech_type':
+    case 'set_tech_name':
       return{
         ...state,
-        techType: action.payload,
+        techName: action.payload,
       };
     case 'set_modal_open':
       return { 
@@ -84,8 +84,8 @@ function TechItemList() {
     dispatch({ type: 'set_current_index' })
   };
 
-  const searchTechType = () => {
-    TechDataService.findByTechType(state.techType)
+  const searchTechName = () => {
+    TechDataService.findByTechName(state.techName)
       .then(response => {
         console.log(response.data);
         // setTechItems(response.data);
@@ -137,16 +137,16 @@ function TechItemList() {
         <div className="search-input-group">
           <input 
             type="text" 
-            placeholder="Search by Tech Type" 
-            value={state.techType} 
+            placeholder="Search by Tech Name" 
+            value={state.techName} 
             onChange={(e) => 
             // setTechType(e.target.value)
             dispatch ({
-              type: 'set_tech_type',
+              type: 'set_tech_name',
               payload: e.target.value,
             })} />
           <div>
-            <button className="btn btn-outline-secondary" type="button" onClick={searchTechType}>Search</button>
+            <button className="btn btn-outline-secondary" type="button" onClick={searchTechName}>Search</button>
           </div>
         </div>
       </div>
