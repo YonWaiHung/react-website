@@ -134,7 +134,7 @@ function TechItem() {
 
           </form>
           <div className="text-right">
-            <Link to="/" style={{ textDecoration: 'none' }} className='link-text'>
+            <Link to="/tech-list" style={{ textDecoration: 'none' }} className='link-text'>
               <button className='cancel-button'>
                 Cancel
               </button>

@@ -30,7 +30,7 @@ function AddTechItem() {
     techItem: {
       techType: '',
       techName: '',
-      amount: null
+      amount: ''
     },
     submitted: false,
   }

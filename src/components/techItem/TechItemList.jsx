@@ -121,7 +121,7 @@ function TechItemList() {
   const handleConfirmDelete = () => {
     TechDataService.delete(state.itemToDelete.id)
       .then(response => {
-        console.log(response.data);
+        console.log(response);
         // setIsModalOpen(false);
         dispatch({ type: 'set_modal_close' })
         refreshList();
