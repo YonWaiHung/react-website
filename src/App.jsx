@@ -2,7 +2,7 @@
 import React, { useState, useReducer } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/login/Login.jsx'
-import Header from './Header.jsx'
+// import Header from './Header.jsx'
 import Sidebar from './components/sidebar/Sidebar.jsx'
 import TechItemList from './components/techItem/TechItemList.jsx'
 import AddTechItem from './components/techItem/AddTechItem.jsx';
@@ -70,8 +70,9 @@ function App() {
         <BrowserRouter>
           {/* Header & Sidebar has to be within BrowserRouter to access route path set below */}
           <div id="outer-container">
-            <Header />
-            <Sidebar onLogout={handleLogoutSuccess} />
+          <Sidebar onLogout={handleLogoutSuccess}/>
+            {/* <Header onLogout={handleLogoutSuccess} />
+            <Sidebar onLogout={handleLogoutSuccess} /> */}
           </div>
           {/* Routes linking to components as a way to navigate around/to each other */}
           <Routes>
